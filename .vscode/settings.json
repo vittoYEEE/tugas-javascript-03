@@ -1,0 +1,7 @@
+{
+  "prettier.semi": true,
+  "[javascript]": {
+    "editor.formatOnType": false,
+    "editor.formatOnSave": false
+  }
+}
