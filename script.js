@@ -370,14 +370,23 @@ for (let i = 1; i <= totalMobil; i++) {
 // Gunakan `while` loop untuk mengisi galon liter demi liter (tambah 1 setiap putaran) selama `volumeAir < 5`.
 // Cetak setiap penambahan liter ke console: "Mengisi air... saat ini volume: [volumeAir] Liter".
 // Di luar loop, cetak: "Galon sudah terisi penuh!"!
-
+let volumeAir = 0;
+while (volumeAir < 5) {
+  volumeAir++;
+  console.log("Mengisi air... saat ini volume: " + volumeAir + " Liter");
+}
+console.log("Galon sudah terisi penuh!");
 // Soal 6.5 (Studi Kasus: Pemanasan Mesin Generator Listrik - do...while loop):
 // Generator cadangan asrama harus melakukan pemanasan mesin minimal 1 kali putaran uji coba meskipun indikator `daya` awalnya bernilai 10.
 // Buat variabel `daya = 10`.
 // Gunakan `do...while` loop untuk mencetak "Mesin generator berhasil diuji pada putaran daya ke-[daya]" lalu naikkan daya (daya++),
 // dengan kondisi while `daya < 10` (kondisi langsung bernilai false).
 // Buktikan bahwa blok di dalam do tetap dijalankan minimal 1 kali!
-
+let daya = 10;
+do {
+  console.log("Mesin generator berhasil diuji pada putaran daya ke-" + daya);
+  daya++;
+} while (daya < 10);
 // ==============================================================================
 // BAGIAN 7: PERTEMUAN 7 (Function: Deklarasi, Parameter, Default Parameter, & Geometri)
 // ==============================================================================
@@ -387,6 +396,12 @@ for (let i = 1; i <= totalMobil; i++) {
 // Ketika fungsi dipanggil, fungsi tersebut akan mencetak pesan ke console:
 // "Teng! Teng! Teng! Waktu belajar di kelas 10A telah dimulai. Harap tertib!"
 // Panggil function tersebut 1 kali untuk mengujinya!
+let bunyikanBelSekolah = () => {
+  console.log(
+    "Teng! Teng! Teng! Waktu belajar di kelas 10A telah dimulai. Harap tertib!",
+  );
+}
+bunyikanBelSekolah();
 
 // Soal 7.2 (Studi Kasus: Mesin Kasir Mini - Function Parameter Aritmatika):
 // Buat 4 buah function yang masing-masing menerima dua parameter (a, b):
@@ -395,6 +410,23 @@ for (let i = 1; i <= totalMobil; i++) {
 // 3. `kali(a, b)`   -> mencetak hasil perkalian a * b
 // 4. `bagi(a, b)`   -> mencetak hasil pembagian a / b
 // Ujilah masing-masing function tersebut dengan angka contoh bebas (misal a = 20, b = 5)!
+let tambah = (a, b) => {
+  console.log(a + b);
+}
+let kurang = (a, b) => {
+  console.log(a - b);
+}
+let kali = (a, b) => {
+  console.log(a * b);
+}
+let bagi = (a, b) => {
+  console.log(a / b);
+}
+
+tambah(20, 5);
+kurang(20, 5);
+kali(20, 5);
+bagi(20, 5);
 // Soal 7.3 (Studi Kasus: Putaran Lari Pagi - Function dengan Default Parameter):
 // Buat sebuah function bernama `lariKelilingLapangan(jumlahPutaran = 3)`.
 // Fungsi ini memiliki default parameter `jumlahPutaran` bernilai 3 jika tidak ada argumen yang dikirimkan.
@@ -402,6 +434,13 @@ for (let i = 1; i <= totalMobil; i++) {
 // Uji fungsi ini dua kali:
 // 1. Panggil `lariKelilingLapangan()` tanpa mengirimkan argumen (akan menjalankan default 3 putaran).
 // 2. Panggil `lariKelilingLapangan(5)` dengan mengirimkan argumen 5 putaran!
+let lariKelilingLapangan = (jumlahPutaran = 3) => {
+  for (let i = 1; i <= jumlahPutaran; i++) {
+    console.log("Lari putaran ke-" + i + " selesai!");
+  }
+}
+lariKelilingLapangan();
+lariKelilingLapangan(5);
 
 // Soal 7.4 (Studi Kasus: Konsultan Desain Lapangan - Function Rumus Bangun Datar):
 // Buat dua buah function perhitungan bangun datar:
@@ -409,6 +448,17 @@ for (let i = 1; i <= totalMobil; i++) {
 // 2. `hitungLuasSegitiga(alas, tinggi)`: Menghitung luas segitiga ((alas * tinggi) / 2), lalu cetak hasilnya ke console!
 // Uji function persegi panjang dengan panjang = 10 dan lebar = 6.
 // Uji function segitiga dengan alas = 12 dan tinggi = 8!
+let hitungLuasPersegiPanjang = (panjang, lebar) => {
+  let luas = panjang * lebar;
+  console.log("Luas Persegi Panjang: " + luas);
+}
+let hitungLuasSegitiga = (alas, tinggi) => {
+  let luas = (alas * tinggi) / 2;
+  console.log("Luas Segitiga: " + luas);
+}
+
+hitungLuasPersegiPanjang(10, 6);
+hitungLuasSegitiga(12, 8);
 // Soal 7.5 (Studi Kasus Terpadu: Program Kasir Diskon Koperasi Sekolah):
 // Buat sebuah function terpadu bernama `hitungTotalKoperasi(namaPelanggan, totalBelanja, isMember)`.
 // Aturan diskon:
@@ -421,6 +471,20 @@ for (let i = 1; i <= totalMobil; i++) {
 // 1. hitungTotalKoperasi("Azzam", 120000, true)
 // 2. hitungTotalKoperasi("Baim", 80000, false)
 
+let hitungTotalKoperasi = (namaPelanggan, totalBelanja, isMember) => {
+  let totalBayar;
+  if (isMember === true && totalBelanja >= 100000) {
+    totalBayar = totalBelanja * 0.85;
+  } else if (isMember === true && totalBelanja < 100000) {
+    totalBayar = totalBelanja * 0.95;
+  } else {
+    totalBayar = totalBelanja;
+  }
+  console.log(`Pelanggan: ${namaPelanggan} | Member: ${isMember} | Total Akhir: Rp ${totalBayar}`);
+};
+
+hitungTotalKoperasi("Azzam", 120000, true);
+hitungTotalKoperasi("Baim", 80000, false);
 
 // ==============================================================================
 //                           AKHIR DARI SUBMISSION
